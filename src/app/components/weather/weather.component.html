@@ -1,0 +1,19 @@
+<div class="flexbox-container">
+    <div class="flexbox-form">
+        <form [formGroup]="weatherSearchForm" (ngSubmit)="weatherRequest(weatherSearchForm.value)">
+            <mat-form-field>
+                <mat-label>Location</mat-label>
+                <input matInput placeholder="İstanbul" class="form-control" type="text" id="weatherLocation"
+                    aria-describedby="weatherLocation" placeholder="Please input a Location"
+                    formControlName="location" />
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="flexbox-info">
+        <img [src]="this.weatherData?.current.weather_icons[0]">
+        <h3>{{ this.weatherData?.location.name }}</h3>
+        <span class=" time">{{today | date:'hh:mm a'}}</span>
+        <h1>{{ this.weatherData?.current.temperature }} °C</h1>
+        <span>{{ this.weatherData?.current.weather_descriptions[0] }}</span>
+    </div>
+</div>

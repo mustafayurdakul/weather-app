@@ -1,0 +1,40 @@
+
+$primary: #fdd835;
+$primary-light: #ffff6b;
+$primary-dark: #c6a700;
+
+$secondary: #424242;
+$secondary-light: #6d6d6d;
+$secondary-dark: #1b1b1b;
+
+$texton-p: #000000;
+$texton-s: #ffffff;
+
+mat-toolbar {
+    background-color: $primary-dark;
+
+    h3 {
+        font-family: 'Pacifico';
+        text-shadow: 0.5px 0.5px 0.5px black;
+        a{
+            margin-right: 20px;
+            text-decoration: none;
+            color: $primary;
+            font-size: x-large;
+        }
+    }
+    nav {
+        justify-content: flex-end;
+        a {
+            text-decoration: none;
+            color: $texton-p;
+            margin-right: 20px;
+            font-size: medium;
+        }
+        a:hover {
+            color: $secondary-dark;
+
+        }
+    }
+
+}

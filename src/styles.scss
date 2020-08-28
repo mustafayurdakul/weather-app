@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primary: #fdd835;
+$primary-light: #ffff6b;
+$primary-dark: #c6a700;
+
+$secondary: #424242;
+$secondary-light: #6d6d6d;
+$secondary-dark: #1b1b1b;
+
+$texton-p: #000000;
+$texton-s: #ffffff;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: $primary-light;}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
