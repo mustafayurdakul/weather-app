@@ -1,5 +1,14 @@
 # WeatherApp
 
+### Mobile
+
+![Mobile](https://i.hizliresim.com/YQZQb5.png)
+
+
+### Desktop
+
+![Desktop](https://i.hizliresim.com/7kmD8v.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
 
 ## Development server
