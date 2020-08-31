@@ -1,6 +1,6 @@
 <div class="flexbox-container">
     <div class="flexbox-form">
-        <form [formGroup]="weatherSearchForm" (ngSubmit)="weatherRequest(weatherSearchForm.value)">
+        <form [formGroup]="weatherSearchForm" (ngSubmit)="openWeatherRequest(weatherSearchForm.value)">
             <mat-form-field>
                 <mat-label>Location</mat-label>
                 <input matInput placeholder="İstanbul" class="form-control" type="text" id="weatherLocation"
@@ -10,10 +10,34 @@
         </form>
     </div>
     <div class="flexbox-info">
-        <img [src]="this.weatherData?.current.weather_icons[0]">
-        <h3>{{ this.weatherData?.location.name }}</h3>
-        <span class=" time">{{today | date:'hh:mm a'}}</span>
-        <h1>{{ this.weatherData?.current.temperature }} °C</h1>
-        <span>{{ this.weatherData?.current.weather_descriptions[0] }}</span>
+        <h3>{{ this.todayData?.name }}</h3>
+        <span class=" time">{{ today | date:'hh:mm a' }}</span>
+        <h1>{{ this.todayData?.main.temp }} °C</h1>
+        <span>{{ this.todayData?.weather[0].main }}</span>
+    </div>
+
+    <div class="flexbox-forecast">
+        <table>
+            <tr>
+                <th> </th>
+                <th> Day - 1 </th>
+                <th> Day - 2 </th>
+                <th> Day - 3 </th>
+                <th> Day - 4 </th>
+                <th> Day - 5 </th>
+                <th> Day - 6 </th>
+
+
+            </tr>
+            <tr>
+                <th>Temp</th>
+                <td>{{ this.forecastData?.daily[0].temp.day }}</td>
+                <td>{{ this.forecastData?.daily[1].temp.day }}</td>
+                <td>{{ this.forecastData?.daily[2].temp.day }}</td>
+                <td>{{ this.forecastData?.daily[3].temp.day }}</td>
+                <td>{{ this.forecastData?.daily[4].temp.day }}</td>
+                <td>{{ this.forecastData?.daily[5].temp.day }}</td>
+            </tr>
+        </table>
     </div>
 </div>

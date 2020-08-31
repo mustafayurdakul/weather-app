@@ -10,37 +10,41 @@ import { WeatherapiService } from '../../services/weatherAPIService/weatherapi.s
 })
 export class WeatherComponent implements OnInit {
 
-    public weatherSearchForm: FormGroup;
-    public weatherData: any;
+    public weatherSearchForm: FormGroup
+    public todayData: any
+    public forecastData: any
 
-    today = new Date();
-    todaysDataTime = '';
+    public lat: any
+    public lon: any
+
+    today = new Date()
+    todaysDataTime = ''
 
     constructor(private formBuilder: FormBuilder,
         private weatherapi: WeatherapiService) {
-        this.todaysDataTime = formatDate(this.today, 'hh:mm a', 'en-US');
+        this.todaysDataTime = formatDate(this.today, 'hh:mm a', 'en-US')
     }
 
     ngOnInit(): void {
         this.weatherSearchForm = this.formBuilder.group({
             location: ['']
         })
-        this.weatherRequestFirst()
-
     }
 
-    weatherRequest(form) {
-        this.weatherapi.getWeather(form.location).subscribe(data => {
-            this.weatherData = data
-            console.log(this.weatherData)
+    openWeatherRequest(form) {
+        this.weatherapi.getOpenWeather(form.location).subscribe(response => {
+            this.todayData = response
+            var coordinates = Object.values(response)[0]
+            this.lat = coordinates.lat
+            this.lon = coordinates.lon
+            this.openForecastRequest(this.lat, this.lon)
         })
     }
 
-    weatherRequestFirst() {
-        this.weatherapi.getWeather('istanbul').subscribe(data => {
-            this.weatherData = data
-            console.log(this.weatherData)
+    openForecastRequest(lat, lon) {
+        this.weatherapi.getOpenForecast(lat, lon).subscribe(response => {
+            this.forecastData = response
+            console.log(response)
         })
     }
-
 }
