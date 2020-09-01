@@ -1,42 +1,75 @@
-<div class="flexbox-container">
-    <div class="flexbox-form">
-        <form [formGroup]="weatherSearchForm" (ngSubmit)="openWeatherRequest(weatherSearchForm.value)">
-            <mat-form-field>
-                <mat-label>Location</mat-label>
-                <input matInput placeholder="İstanbul" class="form-control" type="text" id="weatherLocation"
-                    aria-describedby="weatherLocation" placeholder="Please input a Location"
-                    formControlName="location" />
-            </mat-form-field>
-        </form>
-    </div>
-    <div class="flexbox-info">
-        <h3>{{ this.todayData?.name }}</h3>
-        <span class=" time">{{ today | date:'hh:mm a' }}</span>
-        <h1>{{ this.todayData?.main.temp }} °C</h1>
-        <span>{{ this.todayData?.weather[0].main }}</span>
+<div class="container">
+    <div class="weather">
+        <div class="weather-form">
+            <form [formGroup]="weatherSearchForm" (ngSubmit)="openWeatherRequest(weatherSearchForm.value)">
+                <mat-form-field>
+                    <mat-label>Location</mat-label>
+                    <input matInput placeholder="İstanbul" class="form-control" type="text" id="weatherLocation"
+                        aria-describedby="weatherLocation" autocomplete="off" placeholder="Please input a Location"
+                        formControlName="location" />
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="weather-info" *ngIf="this.forecastData?.daily[0].temp.day != null">
+            <div class="weather-icon">
+                <div *ngIf="this.todayData?.weather[0].main == 'Clouds'">
+                    <span class="icon-weather-cloudy"></span>
+                </div>
+                <div *ngIf="this.todayData?.weather[0].main == 'Thunderstorm'">
+                    <span class="icon-weather-stormy"></span>
+                </div>
+                <div *ngIf="this.todayData?.weather[0].main == 'Drizzle'">
+                    <span class="icon-weather-downpour"></span>
+                </div>
+                <div *ngIf="this.todayData?.weather[0].main == 'Rain'">
+                    <span class="icon-weather-shower"></span>
+                </div>
+                <div *ngIf="this.todayData?.weather[0].main == 'Snow'">
+                    <span class="icon-weather-snow"></span>
+                </div>
+                <div *ngIf="this.todayData?.weather[0].main == 'Clear'">
+                    <span class="icon-weather-sunny"></span>
+                </div>
+            </div>
+            <div class="weather-location">
+                <h1>{{ this.todayData?.name }}</h1>
+                <span>{{ today | date:'hh:mm a' }}</span>
+            </div>
+            <div class="weather-desc">
+                <h1>{{ this.todayData?.main.temp.toFixed(0) }} °C</h1>
+                <span>{{ this.todayData?.weather[0].main }}</span>
+            </div>
+        </div>
     </div>
 
-    <div class="flexbox-forecast">
+    <div class="forecast-info" *ngIf="this.forecastData?.daily[0].temp.day != null">
         <table>
             <tr>
-                <th> </th>
-                <th> Day - 1 </th>
-                <th> Day - 2 </th>
-                <th> Day - 3 </th>
-                <th> Day - 4 </th>
-                <th> Day - 5 </th>
-                <th> Day - 6 </th>
-
-
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+                <th>San</th>
             </tr>
             <tr>
-                <th>Temp</th>
-                <td>{{ this.forecastData?.daily[0].temp.day }}</td>
-                <td>{{ this.forecastData?.daily[1].temp.day }}</td>
-                <td>{{ this.forecastData?.daily[2].temp.day }}</td>
-                <td>{{ this.forecastData?.daily[3].temp.day }}</td>
-                <td>{{ this.forecastData?.daily[4].temp.day }}</td>
-                <td>{{ this.forecastData?.daily[5].temp.day }}</td>
+                <td>{{ this.forecastData?.daily[0].temp.day.toFixed(0) }} °C</td>
+                <td>{{ this.forecastData?.daily[1].temp.day.toFixed(0) }} °C</td>
+                <td>{{ this.forecastData?.daily[2].temp.day.toFixed(0) }} °C</td>
+                <td>{{ this.forecastData?.daily[3].temp.day.toFixed(0) }} °C</td>
+                <td>{{ this.forecastData?.daily[4].temp.day.toFixed(0) }} °C</td>
+                <td>{{ this.forecastData?.daily[5].temp.day.toFixed(0) }} °C</td>
+                <td>{{ this.forecastData?.daily[6].temp.day.toFixed(0) }} °C</td>
+            </tr>
+            <tr class="forecast-daily-desc">
+                <td>{{ this.forecastData?.daily[0].weather[0].main }}</td>
+                <td>{{ this.forecastData?.daily[1].weather[0].main }}</td>
+                <td>{{ this.forecastData?.daily[2].weather[0].main }}</td>
+                <td>{{ this.forecastData?.daily[3].weather[0].main }}</td>
+                <td>{{ this.forecastData?.daily[4].weather[0].main }}</td>
+                <td>{{ this.forecastData?.daily[5].weather[0].main }}</td>
+                <td>{{ this.forecastData?.daily[6].weather[0].main }}</td>
             </tr>
         </table>
     </div>
