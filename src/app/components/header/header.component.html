@@ -1,9 +1,13 @@
 <mat-toolbar>
-    <h3> <a routerLink="/" routerLinkActive="active">Weather App</a>
+    <h3> <a routerLink="/" routerLinkActive="active" translate> {{ 'TITLE' }}</a>
     </h3>
     <nav>
-        <a routerLink="/about" routerLinkActive="active">About</a>
-        <a routerLink="/contact" routerLinkActive="active">Contact</a>
+        <a routerLink="/about" routerLinkActive="active" translate>{{ 'ABOUT' }}</a>
+        <a routerLink="/contact" routerLinkActive="active" translate>{{ 'CONTACT' }}</a>
 
+        <mat-button-toggle-group vertical appearance="legacy">
+            <mat-button-toggle (click)="switchLanguage('en')">EN</mat-button-toggle>
+            <mat-button-toggle (click)="switchLanguage('tr')">TR</mat-button-toggle>
+        </mat-button-toggle-group>
     </nav>
 </mat-toolbar>
