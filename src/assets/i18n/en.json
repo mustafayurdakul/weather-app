@@ -1,5 +1,24 @@
 {
     "TITLE": "Weather App",
     "ABOUT": "About",
-    "CONTACT": "Contact"
+    "CONTACT": "Contact",
+    "DAYS": {
+        "MON": "Mon",
+        "TUE": "Tue",
+        "WED": "Wed",
+        "THU": "Thu",
+        "FRI": "Fri",
+        "SAT": "Sat",
+        "SUN": "Sun"
+    },
+    "LOCATION": "Location",
+    "LOCATION_INPUT": "Please input a Location",
+    "WEATHER": {
+        "CLOUDS": "Clouds",
+        "THUNDER": "Thunderstorm",
+        "DRIZZLE": "Drizzle",
+        "RAIN": "Rain",
+        "SNOW": "Snow",
+        "CLEAR": "Clear"
+    }
 }

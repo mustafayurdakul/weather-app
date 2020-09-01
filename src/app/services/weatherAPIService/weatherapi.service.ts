@@ -13,11 +13,11 @@ export class WeatherapiService {
 
     constructor(private http: HttpClient) { }
 
-    getOpenWeather(location) {
-        return this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${this.key}&units=metric`)
+    getOpenWeather(location, lang) {
+        return this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${this.key}&units=metric&lang=${lang}`)
     }
 
-    getOpenForecast(lat, lon) {
-        return this.http.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${this.key}&units=metric  `)
+    getOpenForecast(lat, lon, lang) {
+        return this.http.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${this.key}&units=metric&lang=${lang}`)
     }
 }

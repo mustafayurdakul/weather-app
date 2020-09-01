@@ -1,5 +1,24 @@
 {
     "TITLE": "Hava Durumu",
     "ABOUT": "Hakkında",
-    "CONTACT": "İletişim"
+    "CONTACT": "İletişim",
+    "DAYS": {
+        "MON": "Pzt",
+        "TUE": "Sal",
+        "WED": "Çrş",
+        "THU": "Per",
+        "FRI": "Cum",
+        "SAT": "Cmr",
+        "SUN": "Paz"
+    },
+    "LOCATION": "Konum",
+    "LOCATION_INPUT": "Lütfen bir konum giriniz.",
+    "WEATHER": {
+        "CLOUDS": "Bulutlu",
+        "THUNDER": "Fırtına",
+        "DRIZZLE": "Drizzle",
+        "Rain": "Yağmurlu",
+        "SNOW": "Karlı",
+        "CLEAR": "Açık"
+    }
 }
