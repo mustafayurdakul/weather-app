@@ -3,10 +3,9 @@
         <div class="weather-form">
             <form [formGroup]="weatherSearchForm" (ngSubmit)="openWeatherRequest(weatherSearchForm.value)">
                 <mat-form-field>
-                    <mat-label>Location</mat-label>
-                    <input matInput placeholder="İstanbul" class="form-control" type="text" id="weatherLocation"
-                        aria-describedby="weatherLocation" autocomplete="off" placeholder="Please input a Location"
-                        formControlName="location" />
+                    <mat-label translate>{{'LOCATION'}}</mat-label>
+                    <input matInput class="form-control" type="text" id="weatherLocation"
+                        aria-describedby="weatherLocation" autocomplete="off" formControlName="location" />
                 </mat-form-field>
             </form>
         </div>
@@ -37,7 +36,7 @@
             </div>
             <div class="weather-desc">
                 <h1>{{ this.todayData?.main.temp.toFixed(0) }} °C</h1>
-                <span>{{ this.todayData?.weather[0].main }}</span>
+                <span>{{ this.todayData?.weather[0].description }}</span>
             </div>
         </div>
     </div>
@@ -45,13 +44,13 @@
     <div class="forecast-info" *ngIf="this.forecastData?.daily[0].temp.day != null">
         <table>
             <tr>
-                <th>Mon</th>
-                <th>Tue</th>
-                <th>Wed</th>
-                <th>Thu</th>
-                <th>Fri</th>
-                <th>Sat</th>
-                <th>San</th>
+                <th translate>{{ 'DAYS.MON' }}</th>
+                <th translate>{{ 'DAYS.TUE' }}</th>
+                <th translate>{{ 'DAYS.WED' }}</th>
+                <th translate>{{ 'DAYS.THU' }}</th>
+                <th translate>{{ 'DAYS.FRI' }}</th>
+                <th translate>{{ 'DAYS.SAT' }}</th>
+                <th translate>{{ 'DAYS.SUN' }}</th>
             </tr>
             <tr>
                 <td>{{ this.forecastData?.daily[0].temp.day.toFixed(0) }} °C</td>
@@ -63,13 +62,13 @@
                 <td>{{ this.forecastData?.daily[6].temp.day.toFixed(0) }} °C</td>
             </tr>
             <tr class="forecast-daily-desc">
-                <td>{{ this.forecastData?.daily[0].weather[0].main }}</td>
-                <td>{{ this.forecastData?.daily[1].weather[0].main }}</td>
-                <td>{{ this.forecastData?.daily[2].weather[0].main }}</td>
-                <td>{{ this.forecastData?.daily[3].weather[0].main }}</td>
-                <td>{{ this.forecastData?.daily[4].weather[0].main }}</td>
-                <td>{{ this.forecastData?.daily[5].weather[0].main }}</td>
-                <td>{{ this.forecastData?.daily[6].weather[0].main }}</td>
+                <td>{{ this.forecastData?.daily[0].weather[0].description }}</td>
+                <td>{{ this.forecastData?.daily[1].weather[0].description }}</td>
+                <td>{{ this.forecastData?.daily[2].weather[0].description }}</td>
+                <td>{{ this.forecastData?.daily[3].weather[0].description }}</td>
+                <td>{{ this.forecastData?.daily[4].weather[0].description }}</td>
+                <td>{{ this.forecastData?.daily[5].weather[0].description }}</td>
+                <td>{{ this.forecastData?.daily[6].weather[0].description }}</td>
             </tr>
         </table>
     </div>
