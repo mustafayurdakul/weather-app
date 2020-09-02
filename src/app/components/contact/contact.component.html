@@ -1,1 +1,15 @@
-<input type="text" [(ngModel)]="message" (change)="sendToServer($event)">
+<form>
+    <mat-form-field>
+        <mat-label>Author</mat-label>
+        <input matInput placeholder="Your Username" [(ngModel)]="message.author" name="Who is it?">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Message</mat-label>
+        <input matInput placeholder="Something Bla.. Bla..">
+        <textarea matInput [(ngModel)]="message.message" name="Something"></textarea>
+    </mat-form-field>
+
+    <button mat-button color="warn" (click)="sendMsg()">Send Message</button>
+
+</form>

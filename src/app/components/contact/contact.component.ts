@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { webSocket } from "rxjs/webSocket";
+import { ChatService } from "../../services/chatService/chat.service";
 
 @Component({
     selector: 'app-contact',
@@ -7,25 +7,25 @@ import { webSocket } from "rxjs/webSocket";
     styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-    message = "hello"
-    subject = webSocket("wss://echo.websocket.org");
 
-    constructor() {
 
+    constructor(private chatService: ChatService) {
+        chatService.messages.subscribe();
     }
 
     ngOnInit(): void {
 
     }
 
-    sendToServer($event) {
-        this.subject.subscribe(
-            msg => console.log('message received: ' + msg), // Called whenever there is a message from the server.
-            err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
-            () => console.log('complete') // Called when connection is closed (for whatever reason).
-        )
-        this.subject.next(this.message)
-        this.subject.complete()
+    public message = {
+        author: "",
+        message: ""
+    };
+
+    sendMsg() {
+        console.log("New Message: ", this.message);
+        this.chatService.messages.next(this.message);
+        this.message.message = "";
     }
 
 }
