@@ -5,12 +5,14 @@
                 <mat-form-field>
                     <mat-label translate>{{'LOCATION'}}</mat-label>
                     <input matInput class="form-control" type="text" id="weatherLocation"
-                        aria-describedby="weatherLocation" autocomplete="off" formControlName="location" />
+                        aria-describedby="weatherLocation" autocomplete="off" formControlName="location"
+                        [placeholder]="'LOCATION_INPUT' | translate" />
                 </mat-form-field>
             </form>
         </div>
         <div class="weather-info" *ngIf="this.forecastData?.daily[0].temp.day != null">
             <div class="weather-icon">
+                <span [ngClass]="{'icon-weather-cloudy' : this.todayData?.weather[0].main == 'Clouds'}"></span>
                 <div *ngIf="this.todayData?.weather[0].main == 'Clouds'">
                     <span class="icon-weather-cloudy"></span>
                 </div>
