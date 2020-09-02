@@ -8,7 +8,7 @@ import { webSocket } from "rxjs/webSocket";
 })
 export class ContactComponent implements OnInit {
     message = "hello"
-    subject = webSocket("");
+    subject = webSocket("wss://echo.websocket.org");
 
     constructor() {
 
